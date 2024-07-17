@@ -1,0 +1,289 @@
+ <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> APM System</title>
+    <link rel="icon" type="x-icon" href="../icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+      div.buttons {
+       margin : 10px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container "> 
+      <img src="../ournewlogo.png" alt="ourlogo" width="300" height="90">
+  <span class="Main_logo_content">  <strong>Activity Points Management System</strong>      </span>
+    </div>
+
+
+
+
+<!-- navbar -->
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">APM System</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Upload Certificate</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Others
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Track Status</a></li>
+                  <li><a class="dropdown-item" href="#">Contact Proctor</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Help</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+<br>
+<br>
+<!-- start content here -->
+
+
+
+<div class="container">
+
+    <div class="container text-center">
+        <div class="row">
+
+          <div class="col-sm-4">
+
+
+
+            <div class="container name_card">
+ 
+                <h1 class="Dashboard">Student Dashboard</h1>
+                <div class="card" style="width: 18rem;">
+                    <img src="../student.png" class="card-img-top" alt="student photo">
+                    <div class="card-body">
+
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">Student Name</th>
+      <td><%= sname %></td>
+    </tr>
+    <tr>
+      <th scope="row">USN</th>
+      <td><%= usn %></td>
+    </tr>
+    <tr>
+      <th scope="row">Proctor ID</th>
+      <td><%= id %></td>
+    </tr>
+    <tr>
+      <th scope="row">Proctor Name</th>
+      <td><%= fname %></td>
+    </tr>
+    <tr>
+      <th scope="row">Semester</th>
+      <td><%= semester %></td>
+    </tr>
+    <tr>
+      <th scope="row">Section</th>
+      <td><%= section %></td>
+    </tr>
+    <tr>
+      <th scope="row">Activity Points</th>
+      <td><% if(points_earned >= 100){ %> 
+        100
+        <% }else{ %>
+        <%= points_earned %>
+        <% } %></td>
+    </tr>
+    <tr>
+      <th scope="row">Remaining Points</th>
+      <td><% if(points_earned >= 100){ %>
+        0
+        <% }else{ %> 
+      <%= 100 - points_earned %>
+      <% } %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      <!--<h6 class="card-title">Student Name: <%= sname %></h6>
+                      <h6 class="card-title">Student USN : <%= usn %></h6>
+                      <h6 class="card-title">Proctor ID : <%= id %></h6>
+                      <h6 class="card-title">Proctor Name : <%= fname %></h6>
+                      <h6 class="card-title">Semester : <%= semester %></h6>
+                      <h6 class="card-title">Section : <%= section %></h6>
+                      <h6 class="card-title">Points Earned :
+                        <% if(points_earned >= 100){ %> 
+                        100
+                        <% }else{ %>
+                        <%= points_earned %>
+                        <% } %>
+                      </h6>
+                      <h6 class="card-title">Remaining Points :
+                        <% if(points_earned >= 100){ %>
+                          0
+                          <% }else{ %> 
+                        <%= 100 - points_earned %>
+                        <% } %>
+                      </h6>-->
+                      <!--<h7 class="card-text "><b>Activity Points</b></h7>
+                      <br>
+                      <p class="card-text "> Gained : 10 <br>Remaining : 90</p>-->
+                    </div>
+                  </div> 
+                </div>
+                
+
+
+                
+          </div>
+
+
+
+          <div class="col-sm-4">
+
+            <h1>Profile Actions</h1>
+            <div class="buttons"><form action="/s_changepwd/<%= usn %>">              
+              <button type="submit" class="btn btn-primary">Change Password</button>
+            </form> </div>
+            <div class="buttons"><form action="/s_upload/<%= usn %>/<%= id %>">              
+              <button type="submit" class="btn btn-primary">Upload Certificate</button>
+            </form> </div>
+            <div class="buttons"><form action="/s_delete/<%= usn %>">              
+              <button type="submit" class="btn btn-primary">Delete Certificate</button>
+            </form> </div>
+            <div class="buttons"><form action="/logout">              
+              <button type="submit" class="btn btn-primary">Logout</button>
+            </form> </div>
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="col-sm-4">
+            
+            <h1>Certificates</h1>
+
+            <div class="buttons"><form action="/s_certificates/<%= usn %>">              
+              <button type="submit" class="btn btn-primary">View All Certificates</button>
+            </form> </div>
+
+            <div class="buttons"><form action="/s_accepted/<%= usn %>">              
+              <button type="submit" class="btn btn-primary">Accepted Certificates</button>
+            </form> </div>
+
+            <div class="buttons"><form action="/s_pending/<%= usn %>">              
+              <button type="submit" class="btn btn-primary">Pending Certificates</button>
+            </form> </div>
+
+            <div class="buttons"><form action="/s_rejected/<%= usn %>">              
+              <button type="submit" class="btn btn-primary">Rejected Certificates</button>
+            </form> </div>
+            
+          
+          </div>
+    
+        </div>
+    </div>   
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+<!-- end content here -->    
+<br>
+<br>
+<br>
+<div class="swalpa_jaga">
+
+
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <br>
+    <br>
+    <br>
+  </body>
+</html> 
